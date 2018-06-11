@@ -192,7 +192,7 @@ Quale delle seguenti affermazioni sul comando time è falsa?
  Il comando /usr/bin/time cmd può solo mostrare il tempo (di CPU, di sistema e reale)
  Esistono 2 comandi time: uno è una keyword della bash e l’latro corrisponde ad un file eseguibile (solitamente /usr/bin/time)
  Il comando time cmd, eseguito dalla bash, può solo mostrare il tempo (di CPU, di sistema e reale)
-a
+b
 
 Quale delle seguenti affermazioni sui comandi less e more è falsa?
  Sono specialmente utili quando si vuole visualizzare un output molto lungo (che non è possibile visualizzare in un’intera schermata di terminale
@@ -476,7 +476,7 @@ d
 
 Quale delle seguenti affermazioni sulle espressioni regolari è vera?
  Il metacarattere + consente di concatenare due regex
- Non è possibile definire un match con il carattere .
+ Non è mai stato possibile definire un match con il carattere .
  Nessuna delle altre opzioni è vera
  Un carattere literal ha un match con se stesso
 d
