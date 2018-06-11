@@ -185,7 +185,7 @@ Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seg
  cmd1 & cmd2
  ( cmd1; cmd2 ) &
  cmd1; cmd2 &
- a
+a
 
 Quale delle seguenti affermazioni sul comando time è falsa?
  Il comando /usr/bin/time cmd ha anche l’effetto di eseguire il comando cmd
