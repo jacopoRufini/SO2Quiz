@@ -73,7 +73,7 @@ public class Quiz {
     System.out.println("\n\nRisposte corrette -> " + rightCounter);
     System.out.println("Risposte lasciate -> " + blankCounter);
     System.out.println("Risposte errate -> " + wrongCounter);
-    System.out.println("\nPunteggio -> " + (rightCounter - wrongCounter) +"/40");
+    System.out.println("\nPunteggio -> " + (rightCounter*2 - wrongCounter) +"/80");
 
   }
 }
