@@ -107,7 +107,7 @@ public class Quiz {
         System.out.println("\n\nRisposte corrette -> " + rightCounter);
         System.out.println("Risposte lasciate -> " + blankCounter);
         System.out.println("Risposte errate -> " + wrongCounter);
-        System.out.println("\nPunteggio -> " + (2 * rightCounter - wrongCounter) +"/" + N_ANSWERS);
+        System.out.println("\nPunteggio -> " + (2 * rightCounter - wrongCounter) +"/" + 2 * N_ANSWERS);
 
     }
 }
