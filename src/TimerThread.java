@@ -7,8 +7,10 @@ public class TimerThread extends Thread {
     private int minutesPassed = 0;
     private int timeoutSeconds;
     private int timeoutMinutes;
+    private boolean timedOut = false;
 
     public TimerThread(int timeoutMinutes, int timeoutSeconds) {
+        super();
         this.timeoutMinutes = timeoutMinutes;
         this.timeoutSeconds = timeoutSeconds;
     }
@@ -36,20 +38,24 @@ public class TimerThread extends Thread {
 
     };
 
-    private boolean timedOut() {
-        return !(minutesPassed < timeoutMinutes || secondsPassed < timeoutSeconds);
+    public boolean timedOut() {
+        return this.timedOut;
     }
 
     @Override
     public void run() {
         myTimer.scheduleAtFixedRate(task, 1000, 1000);
-        while (!this.isInterrupted() && !timedOut()) {
-            ;
-        }
+        try {
+            Thread.currentThread().sleep((timeoutMinutes * 60 + timeoutSeconds) * 1000 + 100);
+        } catch (InterruptedException e) {this.timedOut = true;}
 
         myTimer.cancel();
-        if (timedOut()) {
-            this.interrupt();
+        this.timedOut = !this.timedOut;
+        if (this.timedOut) {
+            System.out.println("\n\nTempo scaduto!");
+            System.out.println("Premi qualsiasi tasto e fai ENTER per vedere i risultati");
         }
+        if (!this.isInterrupted())
+            this.interrupt();
     }
 }
