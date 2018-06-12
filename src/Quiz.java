@@ -1,13 +1,17 @@
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Quiz {
+    static Scanner sc = new Scanner(System.in);
     private List<Question> questions;
     private char[] rightAnswers;
     private char[] givenAnswers;
     private int rightCounter;
     private int blankCounter;
     private int wrongCounter;
+    private TimerThread timer;
 
     public final static int N_ANSWERS = 40;
 
@@ -16,6 +20,22 @@ public class Quiz {
         Collections.shuffle(this.questions);
         rightAnswers = new char[N_ANSWERS];
         givenAnswers = new char[N_ANSWERS];
+    }
+
+    public char getInput() {
+        String input = sc.next();
+        char c = input.charAt(0);
+        while (input.length() != 1 || !Arrays.asList('a', 'b', 'c', 'd', 's').contains(c)) {
+            if (!timer.timedOut()) {
+                System.out.println("Risposta non valida! Seleziona una risposta tra 'a - d' o 's' per skippare");
+                input = sc.next();
+                c = input.charAt(0);
+            } else {
+                break;
+            }
+        }
+
+        return c;
     }
 
 
@@ -35,7 +55,7 @@ public class Quiz {
         Question question;
         char letter;
 
-        TimerThread timer = new TimerThread(40, 0);
+        timer = new TimerThread(30, 0);
         timer.start();
 
         for (int i = 0; i < N_ANSWERS; i++) {
@@ -47,15 +67,8 @@ public class Quiz {
             }
             System.out.println();
 
-            InputThread threadIn = new InputThread();
-            threadIn.start();
-
-            while (!threadIn.isInterrupted() && !timer.isInterrupted()) {
-                ;
-            }
-
-            if (!timer.isInterrupted()) {
-                char input = threadIn.getInput();
+            char input = getInput();
+            if (!timer.timedOut()) {
                 char rightAnswer = question.getRightAnswer();
                 if (input == rightAnswer)
                     rightCounter++;
@@ -66,22 +79,10 @@ public class Quiz {
                 rightAnswers[i] = rightAnswer;
                 givenAnswers[i] = input;
             } else {
-                threadIn.interrupt();
                 for (int j = i; j < N_ANSWERS; j++) {
                     blankCounter++;
-                    rightAnswers[j] = question.getRightAnswer();
+                    rightAnswers[j] = questions.get(j).getRightAnswer();
                     givenAnswers[j] = 's';
-                }
-
-                System.out.println("\n\nTempo scaduto!");
-                System.out.println("Premi qualsiasi tasto e fai ENTER per vedere i risultati");
-
-                while (!threadIn.hasFinished()) {
-                    try {
-                        Thread.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
 
                 break;
@@ -91,7 +92,7 @@ public class Quiz {
         if (!timer.isInterrupted())
             timer.interrupt();
 
-        InputThread.sc.close();
+        sc.close();
         result();
     }
 
@@ -102,7 +103,7 @@ public class Quiz {
             if (givenAnswers[i] != rightAnswers[i])
                 System.out.println(i+1 + "\t" + givenAnswers[i] +"\t|\t\t"+ rightAnswers[i]);
             else
-                System.out.println(i+1 + "\t" + givenAnswers[i] +"\t|\t\t"+ "✓");
+                System.out.println(i+1 + "\t" + givenAnswers[i] +"\t|\t\t"+ "OK!");
         }
         System.out.println("\n\nRisposte corrette -> " + rightCounter);
         System.out.println("Risposte lasciate -> " + blankCounter);

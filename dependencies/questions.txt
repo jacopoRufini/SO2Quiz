@@ -77,7 +77,7 @@ c
 
 Quale delle seguenti affermazioni sugli errori delle syscall di Linux è vera?
  Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror(“Si è verificato il seguente errore nella chiamata a %s”, syscall_name);
- Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: prinf(“%s\n”, stderror(errno));
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: prinf(“%s\n”, strerror(errno));
  Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è sufficiente chiamare perror
  Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è necessario scrivere uno switch sulla variabile globale errno
 b
