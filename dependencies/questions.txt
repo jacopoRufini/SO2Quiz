@@ -1,3 +1,10 @@
+Quale delle seguenti affermazioni sugli errori delle syscall è vera?
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: printf("%s\n", strerror(errno));
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è sufficiente chiamare perror
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è necessario scrivere uno switch sulla variabile globale errno
+ Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror("Si e' verificato il seguente errore nella chiamata a %s", syscall_name);
+a
+
 Quale delle seguenti affermazioni sui processi Linux è falsa?
  In un determinato istante, non possono esserci 2 processi distinti con lo stesso PID
  Per creare i PID dei processi si usano dei numeri interi che crescono sempre
@@ -364,7 +371,7 @@ b
 
 Quale delle seguenti affermazioni è vera?
  Linux è multiutente, perché definisce più utenti, di cui però uno solo può essere loggato su una data macchina
- Linux è multiutente, perché permette a più utenti contemporaneamente di essere loggati sulla stessa macchina
+ Linux è multiutente, perché definisce più utenti; in un dato istante, possono esistere 2 o più processi appartenenti ad utenti diversi
  Linux è multiprocesso, perché permette a più utenti contemporaneamente di essere loggati sulla stessa macchina
  Linux è multiprocesso, perché puù essere usato su una macchina con più processi
 b
