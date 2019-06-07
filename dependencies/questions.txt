@@ -1,16 +1,16 @@
-Quale delle seguenti affermazioni sugli errori delle syscall è vera?
- Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: printf("%s\n", strerror(errno));
- Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è sufficiente chiamare perror
- Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è necessario scrivere uno switch sulla variabile globale errno
- Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror("Si e' verificato il seguente errore nella chiamata a %s", syscall_name);
-a
-
 Quale delle seguenti affermazioni sui processi Linux è falsa?
  In un determinato istante, non possono esserci 2 processi distinti con lo stesso PID
  Per creare i PID dei processi si usano dei numeri interi che crescono sempre
  In istanti diversi, possono esserci 2 processi distinti con lo stesso PID
  Ogni processo può conoscere il suo PID
 b
+
+Quale delle seguenti affermazioni sugli errori delle syscall è vera?
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: printf("%s\n", strerror(errno));
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è sufficiente chiamare perror
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è necessario scrivere uno switch sulla variabile globale errno
+ Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror("Si e' verificato il seguente errore nella chiamata a %s", syscall_name);
+a
 
 Quale delle seguenti affermazioni sui processi Linux è vera?
  Normalmente, il processo figlio, una volta terminata la sua computazione, attende, con una chiamata alla syscall wait, che il padre termini e gli restituisca il suo exit status
@@ -27,7 +27,7 @@ Quale delle seguenti affermazioni sui processi Linux è falsa?
 a
 
 Quale delle seguenti affermazioni sui processi Linux è vera?
- Eseguendo k volte un file eseguibile, si generano k diversi processi
+ Eseguendo (con successo) k volte un file eseguibile, si generano k diversi processi
  Per poter lanciare un file eseguibile, è prima necessario aspettare che il comando precedente sia terminato
  Tutti i processi sono sempre in stato di RUNNING
  Un processo è sempre un’istanza di uno script bash
@@ -61,7 +61,14 @@ Quale delle seguenti affermazioni sulla comunicazione tra processi in Linux è v
  Usando le named pipes, è possibile far comunicare solo processi parenti(ad es., padre con figlio)
 c
 
-Si supponga di avere il seguente frammento di codice: FILE *stream = fopen(NOMEFILE, “w”); Dire quale frammento di codice ha lo stesso effetto.
+Quale delle seguenti affermazioni sulla comunicazione tra processi in Linux è vera?
+ Per far comunicare qualunque coppia di processi è necessario metterli in pipeling da shell
+ Usando la syscall pipe, è possibile far comunicare qualunque coppia di processi
+ Usando le socket si può far comunicare qualsiasi coppia di processi
+ Usando le named pipes, è possibile far comunicare solo processi parenti(ad es., padre con figlio)
+c
+
+Si supponga di avere il seguente frammento di codice: FILE *stream = fopen(NOMEFILE, "w"); Dire quale frammento di codice ha lo stesso effetto.
  int fd = open(NOMEFILE, O_WRONLY | O_CREAT, 0666);
  int fd = open(NOMEFILE, O_WRONLY | O_TRUNC);
  int fd = open(NOMEFILE, O_WRONLY);
@@ -83,8 +90,8 @@ Quale delle seguenti affermazioni sui segnali Linux è vera?
 c
 
 Quale delle seguenti affermazioni sugli errori delle syscall di Linux è vera?
- Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror(“Si è verificato il seguente errore nella chiamata a %s”, syscall_name);
- Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: prinf(“%s\n”, strerror(errno));
+ Per stampare su stderr la spiegazione di un errore verificatosi in una syscall, il cui nome sia contenuto nella variabile syscall_name (di tipo char *), si può effettuare la seguente chiamata: perror("Si è verificato il seguente errore nella chiamata a %s", syscall_name);
+ Per stampare su stdout la spiegazione di un errore verificatosi in una syscall si può effettuare la seguente chiamata: prinf("%s\n", strerror(errno));
  Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è sufficiente chiamare perror
  Per stampare su stdout la spiegazione di un errore verificatosi in una syscall è necessario scrivere uno switch sulla variabile globale errno
 b
@@ -110,9 +117,9 @@ Relativamente alla programmazione bash, la variabile IFS:
  Rappresenta il carattere utilizzato per la separazione in parole (word splitting)
 c
 
-Il linguaggio C:
+Quale delle seguenti affermazioni sul Linguaggio C è vera? 
  Richiede che i programmi siano sempre scritti in file con estensione .c
- Nasce per risolvere le ambiguità e i problemi di portabilità su architetture diverse di cui soffrono gli altri linguaggi di programmazione finora noti
+ Richiede che ogni modulo sia scritto in un file separato, come nel Java
  È stato definito come linguaggio Open Source da Dennis Ritchie
  È stato definito presso i laboratori di ricerca di una compagnia telefonica americana
 d
@@ -123,6 +130,13 @@ Quale delle seguenti affermazioni sulle funzioni malloc, calloc, realloc e free 
  Il primo argomento di realloc, quando non NULL, deve contenere il risultato di una precedente chiamata a malloc, calloc o realloc
  I risultati di malloc, calloc e realloc possono essere passati alla funzione free per poter essere riallocati da future malloc, calloc e/o realloc
 a
+
+Quale delle seguenti affermazioni sulle funzioni malloc, calloc, realloc e free è falsa?
+ I risultati di malloc e calloc possono essere passati alla funzione free per poter essere riallocati da future malloc e/o calloc
+ Le due chiamate malloc(N*sizeof(int)) e calloc(N, sizeof(int)) hanno sempre lo stesso effetto
+ La memoria allocata con malloc e/o calloc viene comunque liberata quando il processo termina, indipendentemente dal fatto di aver o no chiamato la free su ogni zona di memoria allocata
+ La memoria allocata da malloc e/o calloc si trova sullo heap
+c
 
 Quale dei seguenti sistemi operativi non è un antenato di Linux?
  Unix
@@ -140,9 +154,9 @@ a
 
 Quale delle seguenti affermazioni sulla syscall fork è falsa?
  Ritorna 2 valori diversi a seconda che si tratti del processo padre o del processo figlio
- Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è lo stack delle chiamate
- Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è il PID
- Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è il PPID
+ Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è lo stack delle chiamate (che quindi non è copiato)
+ Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è il PID (che quindi non è copiato)
+ Genera una copia esatta del processo chiamante, con alcune eccezioni; tra queste ultime vi è il PPID (che quindi non è copiato)
 b
 
 Quale delle seguenti affermazioni sui comando cmp, diff e patch è vera?
@@ -192,7 +206,14 @@ Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seg
  cmd1 & cmd2
  ( cmd1; cmd2 ) &
  cmd1; cmd2 &
- a
+a
+
+Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seguenti modi è corretto?
+ Nessuna delle altre opzioni è corretta
+ cmd1 & cmd2 &
+ ( cmd1; cmd2 ) &
+ cmd1; cmd2 &
+b
 
 Quale delle seguenti affermazioni sul comando time è falsa?
  Il comando /usr/bin/time cmd ha anche l’effetto di eseguire il comando cmd
@@ -363,15 +384,22 @@ Quale delle seguenti affermazioni sui comandi della bash è falsa?
 a
 
 Quale delle seguenti affermazioni sulle syscall dei processi in Linux è vera?
- Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere var con la chiamata a getenv(“valore”);
+ Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere var con la chiamata a getenv("valore");
  Per qualsiasi processo è possibile conoscere il suo ambiente di esecuzione senza effettuare alcuna syscall
- Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere valore con la chiamata a setenv(“var”,”valore”, 1);
- Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere valore con la chiamata a putenv(“var=valore”);
+ Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere valore con la chiamata a setenv("var","valore", 1);
+ Se un processo viene lanciato nel seguente modo: var=valore ./a.out, allora esso può ottenere valore con la chiamata a putenv("var=valore");
 b
 
 Quale delle seguenti affermazioni è vera?
  Linux è multiutente, perché definisce più utenti, di cui però uno solo può essere loggato su una data macchina
  Linux è multiutente, perché definisce più utenti; in un dato istante, possono esistere 2 o più processi appartenenti ad utenti diversi
+ Linux è multiprocesso, perché permette a più utenti contemporaneamente di essere loggati sulla stessa macchina
+ Linux è multiprocesso, perché puù essere usato su una macchina con più processi
+b
+
+Quale delle seguenti affermazioni è vera?
+ Linux è multiutente, perché definisce più utenti, di cui però uno solo può essere loggato su una data macchina
+ Nessuna delle altre opzioni è vera
  Linux è multiprocesso, perché permette a più utenti contemporaneamente di essere loggati sulla stessa macchina
  Linux è multiprocesso, perché puù essere usato su una macchina con più processi
 b
@@ -388,6 +416,13 @@ Quale delle seguenti non è un possibile stato di un processo Linux?
  Stopped
  Running
  Continued
+d
+
+Quale delle seguenti non è un possibile stato di un processo Linux?
+ Uninterruptible sleep
+ Stopped
+ Running
+ Orphaned
 d
 
 Quale delle seguenti affermazioni sul comando top è vera?
@@ -407,7 +442,7 @@ d
 Quale delle seguenti affermazioni sui processi Linux è vera?
  Per visualizzare i processi attualmente in esecuzione su una determinata bash, è sufficiente usare il comando jobs
  Tutti i processi in background sono in stato Stopped
- Per riportare in foreground un determinato job in background, è sufficiente dare il comando fg sulla bash dove il job è in background, ma solo se tale job è l’attuale “current job” in background
+ Per riportare in foreground un determinato job in background, è sufficiente dare il comando fg sulla bash dove il job è in background, ma solo se tale job è l’attuale "current job" in background
  Per stoppare un processo in foreground, si può sia mandare un segnale SIGTSTP che premere CTRL+Z in una qualsiasi shell
 c
 
@@ -439,6 +474,13 @@ Quale delle seguenti affermazioni è vera?
  In un sistema Unix tutte le risorse sono rappresentate da un file
 c
 
+Quale delle seguenti affermazioni è vera?
+ Ogni risorsa di un sistema Unix, ad eccezione dei processi e periferiche hardware, è rappresentato da un file
+ Ogni risorsa di un sistema Unix, ad eccezione delle connessioni di rete (socket), è rappresentato da un file
+ Ogni risorsa di un sistema Unix, ad eccezione dei stampanti, è rappresentato da un file
+ Nessuna delle opzioni è vera
+d
+
 Quale delle seguenti affermazioni sul comando kill è vera?
  È obbligatorio specificare il segnale da inviare, come numero intero
  Lanciato senza nessun argomento, manda SIGKILL all’ultimo processo lanciato
@@ -468,7 +510,7 @@ Quali delle seguenti affermazioni sulla variabile IFS è vera?
 a
 
 Quale delle seguenti affermazioni sui processi Linux è vera?
- Il processo control block mantiene le informazioni essenziali di ogni processo, è mantenuto su disco e viene swappato in RAM quando il processo va in esecuzione
+ Il process control block mantiene le informazioni essenziali di ogni processo, è mantenuto su disco e viene swappato in RAM quando il processo va in esecuzione
  Lo heap contiene i dati statici inizializzati ed alcune costanti d’ambiente
  Il text segment contiene le istruzioni da eseguire, e viene sempre mantenuto interamente in RAM
  Nessuna delle altre opzioni è vera
@@ -551,6 +593,13 @@ Quali tra le seguenti affermazioni è vera?
  nessuna delle altre risposte è vera
 d
 
+Quali tra le seguenti affermazioni è vera?
+ È possibile stampare esclusivamente le ultime N righe di un file di testo con il comando cat -N -6
+ Il comando tail -c /var/log/maillog stampa in maniera continua le ultime righe del file /var/log/maillog
+ Il comando cut consente di selezionare (scrivendole in output) singole righe di un file
+ Nessuna delle altre opzioni è vera
+d
+
 Quale delle seguenti affermazioni sulle applicazioni client-server realizzate tramite socket è vera?
  Il client deve sempre chiamare la syscall bin
  Il server deve chiamare la syscall connect
@@ -559,8 +608,24 @@ Quale delle seguenti affermazioni sulle applicazioni client-server realizzate tr
 d
 
 Si supponga di voler scrivere un programma immune al CTRL+C. Quali dei seguenti frammenti di codice realizza quanto detto sopra?
- signl( SIGTERM, SIG_DFL);
- signal( SIGINT, SIG_DFL);
+ signal(SIGTERM, SIG_DFL);
+ signal(SIGINT, SIG_DFL);
  signal(SIGINT, SIG_IGN);
  Non è possibile essere immuni al CTRL+C
 c
+
+Quale dei seguenti comandi scrive una singola riga che consiste nel solo carattere '? 
+ echo "'" | awk '{print "'";}'
+ echo niente | awk '{print "'"'"' ";}'
+ Nessuna delle altre opzioni è corretta
+ echo niente | awk '{print "'"'"'";}'
+d
+
+Quale dei seguenti comandi Bash permette di scrivere il numero di caratteri di ogni singola riga di un file di testo nomefile?
+ for riga in "`cat nomefile`"; do echo $riga | wc -c; done
+ var=$(cat nomefile); for riga in ${var}; do echo $riga | wc -c; done
+ for riga in `cat nomefile`; do echo $riga | wc -c; done
+ Nessuna delle altre opzioni è corretta
+d
+
+ 
