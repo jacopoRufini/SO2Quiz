@@ -627,5 +627,4 @@ Quale dei seguenti comandi Bash permette di scrivere il numero di caratteri di o
  for riga in `cat nomefile`; do echo $riga | wc -c; done
  Nessuna delle altre opzioni è corretta
 d
-
  
