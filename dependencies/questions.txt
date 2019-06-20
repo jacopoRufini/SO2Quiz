@@ -621,10 +621,16 @@ Quale dei seguenti comandi scrive una singola riga che consiste nel solo caratte
  echo niente | awk '{print "'"'"'";}'
 d
 
+Nell'albero di directory radicato nella directory corrente di una shell bash ci sono molteplici file di testo, ognuno dei quali contiene il log di una esecuzione di un comando. La prima riga di ogni log riporta esattamente il comando usato per ottenere il log stesso, opzioni ed argomenti compresi. Volendo sapere quali sono i diversi comandi (opzioni ed argomenti esclusi; il comando non contiene mai spazi ed è sempre all'inizio della riga) usati nei vari file di log, quale dei seguenti comandi bash è sbagliato? 
+awk 'FNR == 1{print $1}' `find . -type f` | sort | uniq
+for file in `find . -type f`; do awk 'FNR == 1{print $1}' $file; done | sort | uniq
+for file in `find . -type f`; do head -1 $file | awk '{print $1}' | sort | uniq; done
+for file in `find . -type f`; do head -1 $file | awk '{print $1}'; done | sort | uniq
+c
+
 Quale dei seguenti comandi Bash permette di scrivere il numero di caratteri di ogni singola riga di un file di testo nomefile?
  for riga in "`cat nomefile`"; do echo $riga | wc -c; done
  var=$(cat nomefile); for riga in ${var}; do echo $riga | wc -c; done
  for riga in `cat nomefile`; do echo $riga | wc -c; done
  Nessuna delle altre opzioni è corretta
 d
- 
