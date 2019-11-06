@@ -630,10 +630,10 @@ Quale dei seguenti comandi scrive una singola riga che consiste nel solo caratte
 d
 
 Nell'albero di directory radicato nella directory corrente di una shell bash ci sono molteplici file di testo, ognuno dei quali contiene il log di una esecuzione di un comando. La prima riga di ogni log riporta esattamente il comando usato per ottenere il log stesso, opzioni ed argomenti compresi. Volendo sapere quali sono i diversi comandi (opzioni ed argomenti esclusi; il comando non contiene mai spazi ed è sempre all'inizio della riga) usati nei vari file di log, quale dei seguenti comandi bash è sbagliato?
-awk 'FNR == 1{print $1}' `find . -type f` | sort | uniq
-for file in `find . -type f`; do awk 'FNR == 1{print $1}' $file; done | sort | uniq
-for file in `find . -type f`; do head -1 $file | awk '{print $1}' | sort | uniq; done
-for file in `find . -type f`; do head -1 $file | awk '{print $1}'; done | sort | uniq
+ awk 'FNR == 1{print $1}' `find . -type f` | sort | uniq
+ for file in `find . -type f`; do awk 'FNR == 1{print $1}' $file; done | sort | uniq
+ for file in `find . -type f`; do head -1 $file | awk '{print $1}' | sort | uniq; done
+ for file in `find . -type f`; do head -1 $file | awk '{print $1}'; done | sort | uniq
 c
 
 Quale dei seguenti comandi Bash permette di scrivere il numero di caratteri di ogni singola riga di un file di testo nomefile?
@@ -648,7 +648,6 @@ Quale delle seguenti affermazioni sul Linguaggio C è vera?
  Richiede che ogni modulo sia scritto in un file separato, come nel Java
  È un linguaggio interpretato
  È un linguaggio compilato
- nessuna risposta
 d
 
 Quale delle seguenti affermazioni sul Linguaggio C è vera?
@@ -656,7 +655,6 @@ Quale delle seguenti affermazioni sul Linguaggio C è vera?
  È incompatibile con i Sistemi Operativi della famiglia Windows
  È un linguaggio non strutturato e compilato
  È un linguaggio strutturato e compilato
- nessuna risposta
 d
 
 Si supponga di voler trovare tutti i link simbolici presenti nell'intero file system, che siano stati acceduti nell'ultimo giorno, e si supponga di volerli spostare nella directory /tmp. Quale dei seguenti comandi realizza tale specifica?
@@ -677,15 +675,14 @@ Si supponga che l'utente nomeutente voglia terminare forzatamente tutti i proces
  kill -9 `ps -unomeutente -opid,cmd | grep -E '^[0-9]+ cmd$' | awk '{print $1}'`
  kill -9 `ps -unomeutente -opid,cmd | grep -E '^[0-9]+ cmd$'`
  kill -9 `ps -unomeutente -opid,cmd | grep -E 'cmd' | awk '{print $1}'`
- nessuna risposta
+ Nessuna delle altre opzioni è vera
 a
 
 Quale delle seguenti affermazioni sui programmi scritti in Linguaggio C è vera?
  Il carattere di fine stringa è essenziale nel caso in cui si passi una stringa alla syscall write su una pipe
  Il carattere di fine stringa è essenziale nel caso in cui si passi una stringa alla funzione printf con specificatore di conversione %s
  Le variabili di tipo char *, se inizializzate a tempo di dichiarazione con una costante stringa, avranno un byte in più costituito dal carattere '0'
- Nessuna opzione è vera
- nessuna risposta
+ Nessuna delle altre opzioni è vera
 b
 
 Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzioni, di stampare il numero di occorrenze consecutive di una riga in un file?
@@ -693,7 +690,6 @@ Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzion
  No, occorre utilizzare congiuntamente i comandi sort e wc (con opportune opzioni)
  Si
  Nessuna delle altre opzioni è vera
- nessuna risposta
 c
 
 Quale delle seguenti affermazioni su un file in un filesystem Linux è vera?
