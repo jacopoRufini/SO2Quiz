@@ -695,3 +695,10 @@ Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzion
  Nessuna delle altre opzioni è vera
  nessuna risposta
 c
+
+Quale delle seguenti affermazioni su un file in un filesystem Linux è vera?
+ Nessuna delle opzioni è vera
+ Può esistere un solo path relativo che permette di richiedere l'accesso a tale file
+ Possono esistere uno o più path assoluti che permettono di richiedere l'accesso a tale file
+ Può esistere un solo path, detto assoluto, che permette di richiedere l'accesso a tale file
+c
