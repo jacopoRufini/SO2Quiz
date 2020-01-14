@@ -117,7 +117,7 @@ Relativamente alla programmazione bash, la variabile IFS:
  Rappresenta il carattere utilizzato per la separazione in parole (word splitting)
 c
 
-Quale delle seguenti affermazioni sul Linguaggio C è vera?
+Quale delle seguenti affermazioni sul Linguaggio C è vera? 
  Richiede che i programmi siano sempre scritti in file con estensione .c
  Richiede che ogni modulo sia scritto in un file separato, come nel Java
  È stato definito come linguaggio Open Source da Dennis Ritchie
@@ -171,8 +171,7 @@ Si supponga di voler avere in esecuzione in background i comando cmd1 e cmd2. Qu
  cmd1 #premere Ctrl+Z fg cmd2 #premere Ctrl+Z fg
  cmd1 #premere Ctrl+Z bg cmd2 #premere Ctrl+Z
  cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z fg
- cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z bg bg
-e
+a
 
 Quale delle seguenti affermazioni sulle syscall di Linux che riguardano i files è falsa?
  La syscall link(oldpath, newpath) ha lo stesso effetto del comando bash ln oldpath newpath
@@ -209,19 +208,19 @@ Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seg
  cmd1; cmd2 &
 a
 
-Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seguenti modi è corretto?
- Nessuna delle altre opzioni è corretta
- cmd1 & cmd2 &
- ( cmd1; cmd2 ) &
- cmd1; cmd2 &
-b
-
 Si supponga di voler lanciare in background i comandi cmd1 e cmd2 (si supponga anche che tali comandi non terminino, a meno che non gli si mandi un opportuno segnale). Quale dei seguenti modi è corretto?
  cmd1; cmd2 &
  cmd1 && cmd2
  cmd1 & cmd2
  Nessuna delle altre opzioni è corretta
 d
+
+Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seguenti modi è corretto?
+ Nessuna delle altre opzioni è corretta
+ cmd1 & cmd2 &
+ ( cmd1; cmd2 ) &
+ cmd1; cmd2 &
+b
 
 Quale delle seguenti affermazioni sul comando time è falsa?
  Il comando /usr/bin/time cmd ha anche l’effetto di eseguire il comando cmd
@@ -622,14 +621,14 @@ Si supponga di voler scrivere un programma immune al CTRL+C. Quali dei seguenti 
  Non è possibile essere immuni al CTRL+C
 c
 
-Quale dei seguenti comandi scrive una singola riga che consiste nel solo carattere '?
+Quale dei seguenti comandi scrive una singola riga che consiste nel solo carattere '? 
  echo "'" | awk '{print "'";}'
  echo niente | awk '{print "'"'"' ";}'
  Nessuna delle altre opzioni è corretta
  echo niente | awk '{print "'"'"'";}'
 d
 
-Nell'albero di directory radicato nella directory corrente di una shell bash ci sono molteplici file di testo, ognuno dei quali contiene il log di una esecuzione di un comando. La prima riga di ogni log riporta esattamente il comando usato per ottenere il log stesso, opzioni ed argomenti compresi. Volendo sapere quali sono i diversi comandi (opzioni ed argomenti esclusi; il comando non contiene mai spazi ed è sempre all'inizio della riga) usati nei vari file di log, quale dei seguenti comandi bash è sbagliato?
+Nell'albero di directory radicato nella directory corrente di una shell bash ci sono molteplici file di testo, ognuno dei quali contiene il log di una esecuzione di un comando. La prima riga di ogni log riporta esattamente il comando usato per ottenere il log stesso, opzioni ed argomenti compresi. Volendo sapere quali sono i diversi comandi (opzioni ed argomenti esclusi; il comando non contiene mai spazi ed è sempre all'inizio della riga) usati nei vari file di log, quale dei seguenti comandi bash è sbagliato? 
  awk 'FNR == 1{print $1}' `find . -type f` | sort | uniq
  for file in `find . -type f`; do awk 'FNR == 1{print $1}' $file; done | sort | uniq
  for file in `find . -type f`; do head -1 $file | awk '{print $1}' | sort | uniq; done
@@ -690,11 +689,4 @@ Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzion
  No, occorre utilizzare congiuntamente i comandi sort e wc (con opportune opzioni)
  Si
  Nessuna delle altre opzioni è vera
-c
-
-Quale delle seguenti affermazioni su un file in un filesystem Linux è vera?
- Nessuna delle opzioni è vera
- Può esistere un solo path relativo che permette di richiedere l'accesso a tale file
- Possono esistere uno o più path assoluti che permettono di richiedere l'accesso a tale file
- Può esistere un solo path, detto assoluto, che permette di richiedere l'accesso a tale file
 c
