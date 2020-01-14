@@ -1,0 +1,514 @@
+<html>
+<body>
+<h2>Domande di SO mod. 2 NON presenti nel simulatore del Quiz (reperibile su <a href="http://thefinal.altervista.org/quiz.php" target="_blank">GitHub</a> o in <a href="https://github.com/GaspRulez/SO2Quiz" target="_blank">versione web</a>)</h2>
+@author Andrea Gasparini<br><br>
+<a name="domanda.1"><b>1</b> Si consideri il seguente programma in codice C:<br>
+<textarea cols="100" rows="17" readonly="readonly">#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+  struct s {
+    char *a;
+    char b[20];
+  } *p[2];
+  char *a = strdup("ciao");
+  p[0] = (struct s*)malloc(sizeof(struct s));
+  p[0]-&gt;a = a;
+  strcpy(p[0]-&gt;b, a);
+  COPIA
+  a[1] = '0';
+  printf("%s %s %s %s\n", p[0]-&gt;a, p[0]-&gt;b, p[1]-&gt;a, p[1]-&gt;b);
+}
+</textarea><br>
+Quale delle seguenti affermazioni è vera?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:8:1: --><tr><td><input name="8" value="1" type="radio"></td><td>Se <code>COPIA</code> consiste nell'istruzione <code>memcpy(p[1], p[0], sizeof(struct s));</code>, allora le istruzioni seguenti (se eseguite) avranno un effetto non predicibile</td></tr>
+<!-- :1741959:8:2: --><tr><td><input checked="checked" name="8" value="2" type="radio"></td><td  bgcolor="#00ff00">Se <code>COPIA</code> consiste nell'assegnamento <code>p[1] = p[0];</code>, allora l'ultima istruzione scriverà <code>c0ao c0ao c0ao c0ao</code></td></tr>
+<!-- :1741959:8:3: --><tr><td><input name="8" value="3" type="radio"></td><td>Se <code>COPIA</code> consiste nell'assegnamento <code>p[0] = p[1];</code>, allora l'ultima istruzione scriverà <code>c0ao ciao ciao ciao</code></td></tr>
+<!-- :1741959:8:4: --><tr><td><input name="8" value="4" type="radio"></td><td>Se <code>COPIA</code> consiste nell'assegnamento <code>p[1] = p[0];</code>, allora le istruzioni seguenti (se eseguite) avranno un effetto non predicibile</td></tr>
+<!-- :1741959:8:5: --><tr><td><input name="8" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.2"><b>2</b> Si consideri il seguente frammento di codice C:<br>
+<textarea cols="100" rows="8" readonly="readonly">
+int main() {
+  struct s {
+    char *a;
+    char b[20];
+  } p[5];
+...
+}
+</textarea><br>
+Supponendo di aver eseguito solamente tale frammento, quale delle seguenti affermazioni è falsa?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:9:1: --><tr><td><input name="9" value="1" type="radio"></td><td>Non è stata allocata la memoria per le 5 aree puntate dai 5 campi <code>a</code></td></tr>
+<!-- :1741959:9:2: --><tr><td><input checked="checked" name="9" value="2" type="radio"></td><td bgcolor="#00ff00">È stata allocata la memoria per 5 strutture di tipo <code>struct s</code> sullo heap</td></tr>
+<!-- :1741959:9:3: --><tr><td><input name="9" value="3" type="radio"></td><td>È stata allocata la memoria per 5 strutture di tipo <code>struct s</code> sullo stack delle chiamate</td></tr>
+<!-- :1741959:9:4: --><tr><td><input name="9" value="4" type="radio"></td><td>È stata allocata la memoria per i 100 caratteri dei 5 campi <code>b</code> sullo stack delle chiamate</td></tr>
+<!-- :1741959:9:5: --><tr><td><input name="9" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.3"><b>3</b> Si supponga di eseguire con successo i seguenti comandi da una shell sulla quale non ci sono job in background:<br>
+<textarea cols="100" rows="8" readonly="readonly">
+sudo cp -a `w hich cat` .
+sudo chmod u+s cat
+./cat &
+cat &
+</textarea><br>
+Quale delle seguenti affermazioni è falsa?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:9:1: --><tr><td><input name="9" value="1" type="radio"></td><td>Entrambi i job lanciati saranno in stato di <code>Stopped</code></td></tr>
+<!-- :1741959:9:2: --><tr><td><input checked="checked" name="9" value="2" type="radio"></td><td bgcolor="#00ff00">Eseguendo il comando <code>ps h -oruid -p `jobs -l | awk '{print $2}'`</code> si ottengono 2 numeri diversi</td></tr>
+<!-- :1741959:9:3: --><tr><td><input name="9" value="3" type="radio"></td><td>Eseguendo il comando <code>ps h -opid -p `jobs -l | awk '{print $2}'`</code> si ottengono 2 numeri diversi</td></tr>
+<!-- :1741959:9:4: --><tr><td><input name="9" value="4" type="radio"></td><td>Eseguendo il comando <code>ps h -oeuid -p `jobs -l | awk '{print $2}'`</code> si ottengono 2 numeri diversi</td></tr>
+<!-- :1741959:9:5: --><tr><td><input name="9" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.4"><b>4</b> Si vuole scrivere un programma equivalente al seguente script:<br>
+<textarea cols="100" rows="4" readonly="readonly">echo -n "Esecuzione in corso..."
+/bin/ls -la /
+echo "fatto"
+</textarea>
+<br>
+Quale dei seguenti frammenti di codice realizza quanto detto sopra?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:22:1: --><tr><td><input checked="checked" name="22" value="1" type="radio"></td><td bgcolor="#00ff00">Nessuna delle altre opzioni è corretta</td></tr>
+<!-- :1741959:22:2: --><tr><td><input name="22" value="2" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">char **argv = {"/bin/ls", "-la", "/"};
+printf("Esecuzione in corso...");
+execv("/bin/ls", argv);
+printf("fatto\n");
+</textarea>
+</td></tr>
+<!-- :1741959:22:3: --><tr><td><input name="22" value="3" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">char **argv = {"-la", "/", 0};
+printf("Esecuzione in corso...");
+execv("/bin/ls", argv);
+printf("fatto\n");
+</textarea>
+</td></tr>
+<!-- :1741959:22:4: --><tr><td><input name="22" value="4" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">char **argv = {"/bin/ls", "-la", "/", 0};
+printf("Esecuzione in corso...");
+execv("/bin/ls", argv);
+printf("fatto\n");
+</textarea>
+</td></tr>
+<!-- :1741959:22:5: --><tr><td><input name="22" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.5"><b>5</b> Un file <code>nomefile</code> contiene il
+ risultato della compilazione di un programma. Il compilatore in
+questione scrive righe che iniziano con la sola parola <code>error</code> per gli errori veri e propri, e con <code>error warning</code> per i semplici warning (è garantito che la stringa <code>error warning</code>
+ non sia mai all'inizio di una riga contenente un errore vero e
+proprio). Quale dei seguenti comandi restituisce le sole righe che si
+riferiscono ad errori veri e propri?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:24:1: --><tr><td><input name="24" value="1" type="radio"></td><td>
+<textarea cols="100" rows="2" readonly="readonly">grep -E '^error ([^w]|w[^a]|wa[^r]|war[^n]|warn[^i]|warni[^n]|warnin[^g])'
+</textarea>
+</td></tr>
+<!-- :1741959:24:2: --><tr><td><input name="24" value="2" type="radio"></td><td>Nessuna delle altre opzioni è corretta</td></tr>
+<!-- :1741959:24:3: --><tr><td><input name="24" value="3" type="radio"></td><td>
+<textarea cols="100" rows="2" readonly="readonly">grep -E '^error' nomefile | grep -v warning
+</textarea>
+</td></tr>
+<!-- :1741959:24:4: --><tr><td><input name="24" value="4" type="radio"></td><td>
+<textarea cols="100" rows="2" readonly="readonly">grep -E '^error [^w][^a][^r][^n][^i][^n][^g]' nomefile
+</textarea>
+</td></tr>
+<!-- :1741959:24:5: --><tr><td><input checked="checked" name="24" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.6"><b>6</b> Si supponga di avere il seguente frammento di codice:
+<br>
+<textarea cols="100" rows="4" readonly="readonly">FILE *stream = fopen("file_esistente.txt", "r");
+fseek(stream, -100, SEEK_END);
+long pos = ftell(stream);
+</textarea>
+<br>
+Quale dei seguenti frammenti di codice ha lo stesso effetto?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:31:1: --><tr><td><input name="31" value="1" checked="checked" type="radio"></td><td>
+<textarea cols="100" rows="4" readonly="readonly" style="background-color:lime;">int fd = open("file_esistente.txt", O_RDONLY);
+lseek(fd, -100, SEEK_END);
+long pos = lseek(fd, 0, SEEK_CUR);
+</textarea>
+</td></tr>
+<!-- :1741959:31:2: --><tr><td><input name="31" value="2" type="radio"></td><td>
+<textarea cols="100" rows="4" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+lseek(fd, -100, SEEK_END);
+long pos = lseek(fd, 0, SEEK_END);
+</textarea>
+</td></tr>
+<!-- :1741959:31:3: --><tr><td><input name="31" value="3" type="radio"></td><td>
+<textarea cols="100" rows="4" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+lseek(fd, -100, SEEK_END);
+long pos = lseek(fd, -100, SEEK_SET);
+</textarea>
+</td></tr>
+<!-- :1741959:31:4: --><tr><td><input name="31" value="4" type="radio"></td><td>
+<textarea cols="100" rows="4" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+lseek(fd, -100, SEEK_END);
+long pos = ltell(fd);
+</textarea>
+</td></tr>
+<!-- :1741959:31:5: --><tr><td><input name="31" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.7"><b>7</b> Quale delle seguenti affermazioni sulle <em>syscall</em> <code>wait</code> e <code>waitpid</code> è falsa?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :37:1: --><tr><td><input name="37" value="1" type="radio"></td><td>Se una chiamata <code>wait(&amp;status);</code> ha successo, il valore di <code>status</code> contiene, tra le altre cose, un flag che indica se il processo figlio appena terminato è terminato in modo normale</td></tr>
+<!-- : :37:2: --><tr><td><input name="37" value="2" type="radio"></td><td>Se una chiamata <code>wait(&amp;status);</code> ha successo, il valore di <code>status</code> contiene, tra le altre cose, l'exit status del processo figlio appena terminato</td></tr>
+<!-- : :37:3: --><tr><td><input name="37" value="3" checked="checked" type="radio"></td><td>Se una chiamata <code>wait(&amp;status);</code> ha successo, il valore di <code>status</code> contiene, tra le altre cose, il PID del processo figlio appena terminato</td></tr>
+<!-- : :37:4: --><tr><td><input name="37" value="4" type="radio"></td><td>Se una chiamata <code>wait(&amp;status);</code> ha successo, il valore di <code>status</code> contiene, tra le altre cose, un flag che indica se il processo figlio appena terminato è stato ucciso da un segnale</td></tr>
+<!-- : :37:5: --><tr><td><input name="37" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.8"><b>8</b> Si consideri il seguente frammento di codice C:<br>
+<textarea cols="100" rows="8" readonly="readonly">int main() {
+  struct s {
+    char *a;
+    char b[20];
+  } *p[5];
+...
+}
+</textarea><br>
+Supponendo di aver eseguito solamente tale frammento, quale delle seguenti affermazioni è vera?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :32:1: --><tr><td><input name="32" value="1" type="radio"></td><td>È stata allocata la memoria per 5 strutture di tipo <code>struct s</code> sullo heap</td></tr>
+<!-- : :32:2: --><tr><td><input name="32" value="2" checked="checked" type="radio"></td><td bgcolor="#00ff00">Nessuna delle altre opzioni è vera</td></tr>
+<!-- : :32:3: --><tr><td><input name="32" value="3" type="radio"></td><td>È stata allocata la memoria per i 100 caratteri dei 5 campi <code>b</code> sullo stack delle chiamate</td></tr>
+<!-- : :32:4: --><tr><td><input name="32" value="4" type="radio"></td><td>È stata allocata la memoria per 5 strutture di tipo <code>struct s</code> sullo stack delle chiamate</td></tr>
+<!-- : :32:5: --><tr><td><input name="32" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.9"><b>9</b> Quale dei seguenti frammenti di codice è corretto?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :31:1: --><tr><td><input checked="checked" name="31" value="1" type="radio"></td><td>
+<textarea cols="100" rows="7" readonly="readonly" style="background-color:lime;">int pid = fork();
+if (pid == 0) { /* fai qualcosa, sei il figlio */}
+else if (pid &gt; 0) { /* fai qualcosa, sei il padre */}
+else {
+  perror("fork failed");
+}
+</textarea>
+</td></tr>
+<!-- : :31:2: --><tr><td><input name="31" value="2" type="radio"></td><td>
+<textarea cols="100" rows="7" readonly="readonly">int pid = fork();
+if (pid == 0) { /* fai qualcosa, sei il padre */}
+else if (pid &gt; 0) { /* fai qualcosa, sei il figlio */}
+else {
+  perror("fork failed");
+}
+</textarea>
+</td></tr>
+<!-- : :31:3: --><tr><td><input name="31" value="3" type="radio"></td><td>
+<textarea cols="100" rows="7" readonly="readonly">int pid = fork();
+if (pid &lt; 0) { /* fai qualcosa, sei il figlio */}
+else if (pid &gt; 0) { /* fai qualcosa, sei il padre */}
+else {
+  perror("fork failed");
+}
+</textarea>
+</td></tr>
+<!-- : :31:4: --><tr><td><input name="31" value="4" type="radio"></td><td>Tutte le altre opzioni sono sbagliate</td></tr>
+<!-- : :31:5: --><tr><td><input name="31" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.10"><b>10</b> Si supponga di avere il seguente frammento di codice:
+<br>
+<textarea cols="100" rows="3" readonly="readonly">int var = somefunction()%100;
+printf("%d\n%.2lf\n", var, (double)var);
+</textarea>
+<br>
+dove <code>somefunction</code> ritorna un intero. Quale dei seguenti frammenti di codice scrive gli stessi caratteri sullo stdout, senza errori?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :14:1: --><tr><td><input name="14" value="1" type="radio"></td><td>
+<textarea cols="100" rows="9" readonly="readonly">int var = somefunction()%100;
+char *buf;
+sprintf(buf, "%d", var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+sprintf(buf, "%.2lf", (double)var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+</textarea>
+</td></tr>
+<!-- : :14:2: --><tr><td><input name="14" value="2" checked="checked" type="radio"></td><td>
+<textarea cols="100" rows="9" readonly="readonly" style="background-color:lime;">int var = somefunction()%100;
+char buf[7];
+sprintf(buf, "%d", var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+sprintf(buf, "%.2lf", (double)var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+</textarea>
+</td></tr>
+<!-- : :14:3: --><tr><td><input name="14" value="3" type="radio"></td><td>
+<textarea cols="100" rows="10" readonly="readonly">int var = somefunction()%100;
+char *buf = (char *)calloc(sizeof(int), sizeof(char));
+sprintf(buf, "%d", var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+sprintf(buf, "%.2lf", (double)var);
+write(1, buf, strlen(buf));
+write(1, "\n", 1);
+free(buf);
+</textarea>
+</td></tr>
+<!-- : :14:4: --><tr><td><input name="14" value="4" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">int var = somefunction()%100;
+double var2 = (double)var;
+write(1, (char *)&amp;var, sizeof(var));
+write(1, (char *)&amp;var2, sizeof(var2));
+</textarea>
+</td></tr>
+<!-- : :14:5: --><tr><td><input name="14" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.11"><b>11</b> Si consideri il seguente programma in codice C:<br>
+<textarea cols="100" rows="17" readonly="readonly">#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+  struct s {
+    char *a;
+    char b[20];
+  } p[2];
+  char *a = strdup("ciao");
+  p[0].a = a;
+  strcpy(p[0].b, a);
+  COPIA
+  a[1] = '0';
+  printf("%s %s %s %s\n", p[0].a, p[0].b, p[1].a, p[1].b);
+}
+</textarea><br>
+Quale delle seguenti affermazioni è falsa?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :9:1: --><tr><td><input name="9" value="1" type="radio"></td><td>Se COPIA consiste nell'assegnamento <code>p[1] = p[0];</code>, allora l'ultima istruzione scriverà <code>c0ao c0ao c0ao c0ao</code></td></tr>
+<!-- : :9:2: --><tr><td><input name="9" value="2" type="radio"></td><td>Se COPIA consiste nell'istruzione <code>memcpy(&amp;p[1], &amp;p[0], sizeof(struct s));</code>, allora l'ultima istruzione scriverà <code>c0ao ciao c0ao ciao</code></td></tr>
+<!-- : :9:3: --><tr><td><input name="9" value="3" type="radio"></td><td>Se COPIA consiste nell'assegnamento <code>p[0] = p[1];</code>, allora l'ultima istruzione avrà un effetto non predicibile</td></tr>
+<!-- : :9:4: --><tr><td><input name="9" value="4" checked="checked" type="radio"></td><td bgcolor="#00ff00">Se COPIA consiste nell'assegnamento <code>p[1] = p[0];</code>, allora l'ultima istruzione scriverà <code>c0ao ciao c0ao ciao</code></td></tr>
+<!-- : :9:5: --><tr><td><input name="9" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.12"><b>12</b> Ignorando eventuali memory leaks, quale dei seguenti frammenti di codice può portare
+ad un segmentation fault?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :14:1: --><tr><td><input name="14" value="1" type="radio"></td><td>
+<textarea cols="100" rows="4" readonly="readonly">char *p = malloc(10*sizeof(char));
+p[1] = 'a';
+free(p);
+</textarea>
+</td></tr>
+<!-- : :14:2: --><tr><td><input name="14" value="2" type="radio"></td><td>
+<textarea cols="100" rows="6" readonly="readonly">char *p = malloc(10*sizeof(char));
+p[9] = 'a';
+p = NULL;
+p = realloc(p, 10*sizeof(char));
+free(p);
+</textarea>
+</td></tr>
+<!-- : :14:3: --><tr><td><input name="14" value="3" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">char *p = calloc(10, sizeof(char));
+p[9] = 'a';
+p = realloc(p, 10*sizeof(char));
+free(p);
+</textarea>
+</td></tr>
+<!-- : :14:4: --><tr><td><input name="14" value="4" checked="checked" type="radio"></td><td>
+<textarea cols="100" rows="6" readonly="readonly" style="background-color:lime;">char *p = calloc(10, sizeof(char));
+p[9] = 'a';
+free(p);
+p = realloc(p, 10*sizeof(char));
+free(p);
+</textarea>
+</td></tr>
+<!-- : :14:5: --><tr><td><input name="14" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.13"><b>13</b> Si supponga di avere il seguente frammento di codice:
+<br>
+<textarea cols="100" rows="4" readonly="readonly">int var = somefunction1();
+double var2 = somefunction2();
+fprintf(stdout, "%d\n%lf\n", var, var2);
+</textarea>
+<br>
+dove <code>somefunction</code> ritorna un intero. Quale dei seguenti frammenti di codice scrive gli stessi caratteri sullo stdout, senza errori?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :14:1: --><tr><td><input name="14" value="1" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">int var = somefunction1();
+double var2 = somefunction2();
+write(1, (char *)&var, sizeof(var));
+write(1, (char *)&var2, sizeof(var2));
+</textarea>
+</td></tr>
+<!-- : :14:2: --><tr><td><input name="14" value="2" type="radio"></td><td>
+<textarea cols="100" rows="8" readonly="readonly">int var = somefunction1();
+double var2 = somefunction2();
+char *buf = calloc(sizeof(var2) > sizeof(var)? sizeof(var2) : sizeof(var), sizeof(char));
+sprintf(buf, "%d\n", var);
+write(1, buf, sizeof(var) + 1);
+sprintf(buf, "%lf\n", var2);
+write(1, buf, sizeof(var2) + 1);
+</textarea>
+</td></tr>
+<!-- : :14:3: --><tr><td><input name="14" value="3" checked="checked" type="radio"></td><td>
+<textarea cols="100" rows="10" readonly="readonly" style="background-color:lime;">int var = somefunction1();
+double var2 = somefunction2();
+char *buf = calloc(sizeof(var2) > sizeof(var)? sizeof(var2) : sizeof(var), sizeof(char));
+sprintf(buf, "%d", var);
+write(1, buf, sizeof(var));
+write(1, "\n", 1);
+sprintf(buf, "%lf", var2);
+write(1, buf, sizeof(var2));
+write(1, "\n", 1);
+</textarea>
+</td></tr>
+<!-- : :14:4: --><tr><td><input name="14" value="4" type="radio"></td><td>
+<textarea cols="100" rows="10" readonly="readonly">int var = somefunction1();
+double var2 = somefunction2();
+char buf[4];
+sprintf(buf, "%d", var);
+write(1, buf, sizeof(var));
+write(1, "\n", 1);
+sprintf(buf, "%lf", var2);
+write(1, buf, sizeof(var2));
+write(1, "\n", 1);
+</textarea>
+</td></tr>
+<!-- : :14:5: --><tr><td><input name="14" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.14"><b>14</b> Si supponga di avere il seguente frammento di codice:
+<br>
+<textarea cols="100" rows="11" readonly="readonly">FILE *stream = fopen("file_esistente.txt", "r");
+int var;
+double var2;
+fscanf(stream, "%d\n%lf\n", &var, &var2);
+
+e che il file file_esistente.txt abbia il seguente contenuto:
+
+4567
+34.56
+
+</textarea>
+<br>
+Quale dei seguenti frammenti di codice ha lo stesso effetto?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- :1741959:31:1: --><tr><td><input name="31" value="1" checked="checked" type="radio"></td><td>
+<textarea cols="100" rows="9" readonly="readonly" style="background-color:lime;">int fd = open("file_esistente.txt", O_RDONLY);
+int var;
+double var2;
+char *buf = calloc(sizeof(var2) > sizeof(var)? sizeof(var2) : sizeof(var), sizeof(char));
+read(fd, buf, sizeof(var));
+var = atoi(buf);
+read(fd, buf, sizeof(var2));
+var2 = atof(buf);
+</textarea>
+</td></tr>
+<!-- :1741959:31:2: --><tr><td><input name="31" value="2" type="radio"></td><td>
+<textarea cols="100" rows="6" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+int var;
+double var2;
+read(fd, &var, sizeof(var));
+read(fd, &var2, sizeof(var2));		//qua non effettua alcuna conversione
+</textarea>
+</td></tr>
+<!-- :1741959:31:3: --><tr><td><input name="31" value="3" type="radio"></td><td>
+<textarea cols="100" rows="9" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+int var;
+double var2;
+char buf[4];
+read(fd, buf, sizeof(var));		//qua la effettua ma il buffer non può
+var = atoi(buf);			//contenere un double, è troppo piccolo
+read(fd, buf, sizeof(var2));
+var2 = atof(buf);
+</textarea>
+</td></tr>
+<!-- :1741959:31:4: --><tr><td><input name="31" value="4" type="radio"></td><td>
+<textarea cols="100" rows="5" readonly="readonly">int fd = open("file_esistente.txt", O_RDONLY);
+int var;
+double var2;
+fscanf(fd, "%d\n%lf\n", &var, &var2);
+</textarea>
+</td></tr>
+<!-- :1741959:31:5: --><tr><td><input name="31" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.15"><b>15</b> La directory corrente di una shell bash contiene <i>N</i> directory non nascoste. In ognuna di queste directory è contenuto un file di testo <code>.txt</code> contenente una sola riga con un numero <i>M</i>, potenzialmente diverso da directory a directory. Inoltre può essere presente un file <code>dati.<i>M</i>.txt</code>. Si vuole sapere quanti sono in totale, tra le varie directory, questi file <code>dati.<i>M</i>.txt</code>, senza scrivere nulla su standard error. Quale dei seguenti comandi bash è <i>corretto</i>?
+<br><br>
+</a><table border="1">
+<tbody>
+<!-- : :37:1: --><tr><td><input name="37" value="1" type="radio"></td><td><code>for dir in ./*; do test -f $dir/dati.`cat $dir/.txt`.txt | wc -l; done</code></td></tr>
+<!-- : :37:2: --><tr><td><input name="37" value="2" checked="checked" type="radio"></td><td bgcolor="#00ff00"><code>for dir in ./*; do test -f $dir/dati.`cat $dir/.txt`.txt && echo si; done | wc -l</code></td></tr>
+<!-- : :37:3: --><tr><td><input name="37" value="3" type="radio"></td><td><code>for dir in ./*; do test -f $dir/dati.`cat $dir/.txt`.txt || echo no; done | wc -l</code></td></tr>
+<!-- : :37:4: --><tr><td><input name="37" value="4" type="radio"></td><td><code>for dir in ./*; do test -f $dir/dati.`cat $dir/.txt`.txt && echo no; done | wc -l</code></td></tr>
+<!-- : :37:5: --><tr><td><input name="37" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+<a name="domanda.16"><b>16</b> Si supponga di avere il seguente frammento di codice:<br>
+<textarea cols="100" rows="2" readonly="readonly">
+FILE*stream = fopen(NOMEFILE, "w");
+</textarea><br>
+Quale dei seguenti frammenti di codice ha lo stesso effetto?
+<br><br>
+</a><table border="1">
+<tbody>
+  <!-- : :37:1: --><tr><td><input name="37" value="1" type="radio"></td><td><code>int fd = open(NOMEFILE, O_WRONLY);</code></td></tr>
+  <!-- : :37:2: --><tr><td><input name="37" value="2" checked="checked" type="radio"></td><td bgcolor="#00ff00"><code>int fd = open(NOMEFILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);</code></td></tr>
+  <!-- : :37:3: --><tr><td><input name="37" value="3" type="radio"></td><td><code>int fd = open(NOMEFILE, O_WRONLY | O_CREAT, 0666);</code></td></tr>
+  <!-- : :37:4: --><tr><td><input name="37" value="4" type="radio"></td><td><code>int fd = open(NOMEFILE, O_WRONLY | O_TRUNC);</code></td></tr>
+  <!-- : :37:5: --><tr><td><input name="37" value="5" type="radio"></td><td>nessuna risposta</td></tr>
+</tbody></table>
+<br><br><br>
+
+</body>
+</html>
