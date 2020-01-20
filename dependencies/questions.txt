@@ -166,6 +166,13 @@ Quale delle seguenti affermazioni sui comando cmp, diff e patch è vera?
  L’opzione -i di cmp permette di considerare come uguali le differenze sul solo minuscolo/maiuscolo
 b
 
+Si supponga di voler avere in esecuzione in background i comando cmd1 e cmd2 (si supponga anche che tali comandi non terminino, a meno che non gli si mandi un opportuno segnale). Quale dei seguenti modi è corretto?
+ cmd1 #premere Ctrl+C bg cmd2 #premere Ctrl+C bg
+ cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z fg
+ cmd1 #premere Ctrl+Z cmd2 bg #premere Ctrl+Z bg
+ cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z bg bg
+c
+
 Si supponga di voler avere in esecuzione in background i comando cmd1 e cmd2. Quale dei seguenti modi è corretto?
  cmd1 #premere Ctrl+Z bg cmd2 #premere Ctrl+Z bg
  cmd1 #premere Ctrl+Z fg cmd2 #premere Ctrl+Z fg
@@ -689,4 +696,11 @@ Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzion
  No, occorre utilizzare congiuntamente i comandi sort e wc (con opportune opzioni)
  Si
  Nessuna delle altre opzioni è vera
+c
+
+Quale delle seguenti affermazioni su un file in un filesystem Linux è vera?
+ Può esistere un solo path, detto assoluto, che permette di richiedere l'accesso a tale file
+ Nessuna delle altre opzioni è vera
+ Può esistere un solo path relativo che permette di richiedere l'accesso a tale file
+ Possono esistere uno o più path assoluti che permettono di richiedere l'accesso a tale file
 c
