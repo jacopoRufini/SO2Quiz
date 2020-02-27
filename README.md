@@ -1,7 +1,5 @@
 # SO2Quiz
 
-## Introduction
-
 App giocattolo per l'esame "quiz-patente" di Sistemi Operativi 2 - Sapienza, Informatica.
 
 ## Come lanciare:
