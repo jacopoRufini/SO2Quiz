@@ -1,6 +1,13 @@
 # SO2Quiz
-Piccola applet per l'esame di SO2 - secondo anno - Sapienza Università di Roma
 
-Per runnare recati nella cartella tramite la console e scrivi java -jar SO2Quiz.jar
+App giocattolo per l'esame "quiz-patente" di Sistemi Operativi 2 - Sapienza, Informatica.
 
-Per windows leggiti il .txt presente nella directory.
+## Come lanciare:
+
+Per linux/mac:
+
+```cd SO2Quiz```
+
+```java -jar SO2Quiz.jar```
+
+Per Windows, mi spiace bro, leggi il file _WINDOWS__README.TXT_.
