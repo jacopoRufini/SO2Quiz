@@ -14,8 +14,9 @@ Utilizzalo a tuo rischio e pericolo, ma soprattutto non venirci a dire "eh ma qu
 Clonare questo repo usando `git`, **oppure** scaricare e scompattare lo zip di questa repo.
 
 Per linux/mac:
-```
-cd SO2Quiz
+```sh
+git clone https://github.com/andrea-gasparini/SO2-exam-simulator.git
+cd SO2-exam-simulator
 java -jar SO2Quiz.jar
 ```
 
@@ -29,7 +30,8 @@ L'app é stata sviluppata e testata con Java 10, pertanto è fortemente consigli
 
 ## Come contribuire
 Per **aggiungere** o **modificare** le domande: `dependencies/questions.txt`
-Oppure dai un'occhiata alla TODO List dei desideri.
+
+Oppure dai un'occhiata alla [TODO List dei desideri](#todo-list-dei-desideri).
 
 ## TODO List dei desideri
 - [ ] **GUI cross-platform** (con JavaFX o con altro, ogni proposta è ben accetta, soprattutto JS, purché giri su Github Sites e funzioni).
