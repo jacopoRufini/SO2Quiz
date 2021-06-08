@@ -1,4 +1,4 @@
-# SO2Quiz
+# SO2-exam-simulator
 App giocattolo per l'esame "quiz-patente" di Sistemi Operativi 2 - Sapienza, Informatica.
 
 Semplice app **da terminale** che si occuperà di addestrare il cadetto all'esame di SO2.
