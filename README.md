@@ -3,6 +3,8 @@ App giocattolo per l'esame "quiz-patente" di Sistemi Operativi 2 - Sapienza, Inf
 
 Semplice app **da terminale** che si occuperà di addestrare il cadetto all'esame di SO2.
 
+Questo progetto non è più mantenuto attivamente, fare riferimento a https://github.com/dag7dev/SOSim.
+
 ## Disclaimer
 ---
 Ci solleviamo da ogni responsabilità di utilizzo improprio di questo strumento.
