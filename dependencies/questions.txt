@@ -136,7 +136,7 @@ Quale delle seguenti affermazioni sulle funzioni malloc, calloc, realloc e free 
  Le due chiamate malloc(N*sizeof(int)) e calloc(N, sizeof(int)) hanno sempre lo stesso effetto
  La memoria allocata con malloc e/o calloc viene comunque liberata quando il processo termina, indipendentemente dal fatto di aver o no chiamato la free su ogni zona di memoria allocata
  La memoria allocata da malloc e/o calloc si trova sullo heap
-c
+b
 
 Quale dei seguenti sistemi operativi non è un antenato di Linux?
  Unix
@@ -165,6 +165,13 @@ Quale delle seguenti affermazioni sui comando cmp, diff e patch è vera?
  È possibile usare il comando patch solo se si ha, indifferentemente, l’output del comando diff o del comando cmp
  L’opzione -i di cmp permette di considerare come uguali le differenze sul solo minuscolo/maiuscolo
 b
+
+Si supponga di voler avere in esecuzione in background i comando cmd1 e cmd2 (si supponga anche che tali comandi non terminino, a meno che non gli si mandi un opportuno segnale). Quale dei seguenti modi è corretto?
+ cmd1 #premere Ctrl+C bg cmd2 #premere Ctrl+C bg
+ cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z fg
+ cmd1 #premere Ctrl+Z cmd2 bg #premere Ctrl+Z bg
+ cmd1 #premere Ctrl+Z cmd2 #premere Ctrl+Z bg bg
+c
 
 Si supponga di voler avere in esecuzione in background i comando cmd1 e cmd2. Quale dei seguenti modi è corretto?
  cmd1 #premere Ctrl+Z bg cmd2 #premere Ctrl+Z bg
@@ -207,6 +214,13 @@ Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seg
  ( cmd1; cmd2 ) &
  cmd1; cmd2 &
 a
+
+Si supponga di voler lanciare in background i comandi cmd1 e cmd2 (si supponga anche che tali comandi non terminino, a meno che non gli si mandi un opportuno segnale). Quale dei seguenti modi è corretto?
+ cmd1; cmd2 &
+ cmd1 && cmd2
+ cmd1 & cmd2
+ Nessuna delle altre opzioni è corretta
+d
 
 Si supponga di voler lanciare in background i comandi cmd1 e cmd2. Quale dei seguenti modi è corretto?
  Nessuna delle altre opzioni è corretta
@@ -621,10 +635,72 @@ Quale dei seguenti comandi scrive una singola riga che consiste nel solo caratte
  echo niente | awk '{print "'"'"'";}'
 d
 
+Nell'albero di directory radicato nella directory corrente di una shell bash ci sono molteplici file di testo, ognuno dei quali contiene il log di una esecuzione di un comando. La prima riga di ogni log riporta esattamente il comando usato per ottenere il log stesso, opzioni ed argomenti compresi. Volendo sapere quali sono i diversi comandi (opzioni ed argomenti esclusi; il comando non contiene mai spazi ed è sempre all'inizio della riga) usati nei vari file di log, quale dei seguenti comandi bash è sbagliato? 
+ awk 'FNR == 1{print $1}' `find . -type f` | sort | uniq
+ for file in `find . -type f`; do awk 'FNR == 1{print $1}' $file; done | sort | uniq
+ for file in `find . -type f`; do head -1 $file | awk '{print $1}' | sort | uniq; done
+ for file in `find . -type f`; do head -1 $file | awk '{print $1}'; done | sort | uniq
+c
+
 Quale dei seguenti comandi Bash permette di scrivere il numero di caratteri di ogni singola riga di un file di testo nomefile?
  for riga in "`cat nomefile`"; do echo $riga | wc -c; done
  var=$(cat nomefile); for riga in ${var}; do echo $riga | wc -c; done
  for riga in `cat nomefile`; do echo $riga | wc -c; done
  Nessuna delle altre opzioni è corretta
 d
- 
+
+Quale delle seguenti affermazioni sul Linguaggio C è vera?
+ Richiede che i programmi siano sempre scritti in file con estensione .c
+ Richiede che ogni modulo sia scritto in un file separato, come nel Java
+ È un linguaggio interpretato
+ È un linguaggio compilato
+d
+
+Quale delle seguenti affermazioni sul Linguaggio C è vera?
+ Richiede che i programmi siano sempre scritti in file con estensione .c
+ È incompatibile con i Sistemi Operativi della famiglia Windows
+ È un linguaggio non strutturato e compilato
+ È un linguaggio strutturato e compilato
+d
+
+Si supponga di voler trovare tutti i link simbolici presenti nell'intero file system, che siano stati acceduti nell'ultimo giorno, e si supponga di volerli spostare nella directory /tmp. Quale dei seguenti comandi realizza tale specifica?
+ find/ -type l -atime 0 -exec mv '{}' /tmp/ \;
+ find/ -type l -ctime 0 | aw k '{print "mv", $1, "/tmp";}'
+ find/ -type l -atime 0 -exec mv /tmp/ '{}'';'
+ find/ -type l -ctime 0 -exec mv '{}' /tmp/ \;
+a
+
+Quale delle seguenti affermazioni sulle syscall dei processi in Linux è falsa?
+ La syscall getuid() ritorna il real user ID del processo chiamante
+ La syscall getpid() ritorna il PID del processo chiamante
+ La syscall getppid() ritorna il PID del processo che ha generato quello chiamante (o che lo ha adottato)
+ La syscall setuid() ritorna il real user ID del processo chiamante
+d
+
+Si supponga che l'utente nomeutente voglia terminare forzatamente tutti i processi attualmente in esecuzione che lui stesso abbia creato con il comando bash cmd (senza argomenti). Si supponga anche che la stringa cmd non contenga metacaratteri per regular expressions estese. Quale dei seguenti comandi bash deve usare l'utente nomeutente?
+ kill -9 `ps -unomeutente -opid,cmd | grep -E '^[0-9]+ cmd$' | awk '{print $1}'`
+ kill -9 `ps -unomeutente -opid,cmd | grep -E '^[0-9]+ cmd$'`
+ kill -9 `ps -unomeutente -opid,cmd | grep -E 'cmd' | awk '{print $1}'`
+ Nessuna delle altre opzioni è vera
+a
+
+Quale delle seguenti affermazioni sui programmi scritti in Linguaggio C è vera?
+ Il carattere di fine stringa è essenziale nel caso in cui si passi una stringa alla syscall write su una pipe
+ Il carattere di fine stringa è essenziale nel caso in cui si passi una stringa alla funzione printf con specificatore di conversione %s
+ Le variabili di tipo char *, se inizializzate a tempo di dichiarazione con una costante stringa, avranno un byte in più costituito dal carattere '0'
+ Nessuna delle altre opzioni è vera
+b
+
+Esiste in Linux un comando che consente, sfruttando opportunamente le sue opzioni, di stampare il numero di occorrenze consecutive di una riga in un file?
+ No, occorre utilizzare congiuntamente i comandi grep e wc (con opportune opzioni)
+ No, occorre utilizzare congiuntamente i comandi sort e wc (con opportune opzioni)
+ Si
+ Nessuna delle altre opzioni è vera
+c
+
+Quale delle seguenti affermazioni su un file in un filesystem Linux è vera?
+ Può esistere un solo path, detto assoluto, che permette di richiedere l'accesso a tale file
+ Nessuna delle altre opzioni è vera
+ Può esistere un solo path relativo che permette di richiedere l'accesso a tale file
+ Possono esistere uno o più path assoluti che permettono di richiedere l'accesso a tale file
+c
